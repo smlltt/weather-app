@@ -15,34 +15,18 @@ import {
   mapTemperatureToRadar,
   mapWindSpeedToRadar,
 } from "../utils";
-import { useEffect, useState } from "react";
 
 ChartJS.register(
-  RadialLinearScale,
-  PointElement,
-  LineElement,
-  Filler,
-  Tooltip,
-  Legend,
+    RadialLinearScale,
+    PointElement,
+    LineElement,
+    Filler,
+    Tooltip,
+    Legend,
 );
 
 const Chart = () => {
   const { recentSearches } = useSearchStore();
-  const [isLargeScreen, setIsLargeScreen] = useState(false);
-
-  useEffect(() => {
-    const checkScreenSize = () => {
-      setIsLargeScreen(window.innerWidth >= 768);
-    };
-
-    checkScreenSize();
-
-    window.addEventListener("resize", checkScreenSize);
-
-    return () => {
-      window.removeEventListener("resize", checkScreenSize);
-    };
-  }, []);
 
   if (recentSearches.length === 0) {
     return null;
@@ -68,23 +52,14 @@ const Chart = () => {
     datasets,
   };
   return (
-    <div className={"pt-5 mt-5 bg-white my-auto rounded-2xl shadow-2xl"}>
-      <div className={"pb-5 font-medium text-center text-2xl md:hidden"}>
-        Compare your last searches:
+      <div className={"pt-5 mt-5 bg-white rounded-2xl shadow-2xl flex justify-center items-center"}>
+        <div className={"h-full md:block"}>
+          <div className={"pb-5 font-medium text-center text-2xl md:hidden"}>
+            Compare your last searches:
+          </div>
+          <Radar data={data} />
+        </div>
       </div>
-      <Radar
-        data={data}
-        options={{ aspectRatio: 1 }}
-        //done like this because tailwind's md:hidden lead to unpredictable behavior
-        //and made it tricky to center the chart on small screens
-        //also for small screen I want to keep the default style with aspectRatio set to 1 because I like the way it looks
-        style={{ display: isLargeScreen ? "none" : "block" }}
-      />
-
-      <div className={"h-[400] hidden md:block"}>
-        <Radar data={data} />
-      </div>
-    </div>
   );
 };
 
