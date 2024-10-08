@@ -24,7 +24,6 @@ ChartJS.register(CustomRadarController, CustomRadialLinearScale);
 
 const Chart = () => {
   const { recentSearches, placeId } = useSearchStore();
-  console.log({ recentSearches });
   if (recentSearches.length === 0) {
     return null;
   }
@@ -56,9 +55,6 @@ const Chart = () => {
       }
     >
       <div className={"h-full md:block"}>
-        <div className={"pb-5 font-medium text-center text-2xl md:hidden"}>
-          Compare your last searches:
-        </div>
         <Radar type="derivedRadar" data={data} options={radarOptions} />
       </div>
     </div>
