@@ -17,7 +17,11 @@ interface SearchState {
   addRecentSearch: (placeId: PlaceId, placeName: string) => void;
   updateRecentSearch: (
     placeId: PlaceId,
-    updates: { temperature?: number; humidity?: number; windSpeed?: number },
+    updates: {
+      temperature?: number;
+      humidity?: number;
+      windSpeed?: number;
+    },
   ) => void;
 }
 

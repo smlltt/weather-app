@@ -2,8 +2,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import WeatherCard from "./components/WeatherCard";
 import { format } from "date-fns";
 import RecentSearches from "./components/RecentSearches";
-import Chart from "./components/Chart.tsx";
+// import Chart from "./components/Chart.tsx";
 import Form from "./components/Form";
+import Chart from "./components/Chart/index.tsx";
 
 const queryClient = new QueryClient();
 function App() {

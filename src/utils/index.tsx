@@ -88,13 +88,5 @@ export const mapTemperatureToRadar = createRadarMapper(-10, 40);
 export const mapHumidityToRadar = createRadarMapper(10, 90);
 export const mapWindSpeedToRadar = createRadarMapper(0, 30);
 
-export const getDataSetColor = (index: number, opacity: number): string => {
-  const colors = [
-    `rgba(255, 99, 132, ${opacity})`,
-    `rgba(54, 162, 235, ${opacity})`,
-    `rgba(255, 206, 86, ${opacity})`,
-    `rgba(75, 192, 192, ${opacity})`,
-  ];
-
-  return colors[index] || colors[0];
-};
+export const getDataSetColor = (opacity): string =>
+  `rgba(54, 162, 235, ${opacity})`;
